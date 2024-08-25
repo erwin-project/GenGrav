@@ -15,14 +15,14 @@ def GetDataTopexParam(message):
     south = query({"inputs": {"question": "What is the value of south?", "context": message}})
     west = query({"inputs": {"question": "What is the value of west?", "context": message}})
     east = query({"inputs": {"question": "What is the value of east?", "context": message}})
-    raw_data_type = query({"inputs": {"question": "What is the kind of data?", "context": message}})
+    RawDataType = query({"inputs": {"question": "What is the kind of data?", "context": message}})
 
     data_param_topex = {
         'north': float(Helper.CheckScore(north)) if Helper.CheckScore(north) != '' else Helper.CheckScore(north),
         'south': float(Helper.CheckScore(south)) if Helper.CheckScore(south) != '' else Helper.CheckScore(south),
         'west': float(Helper.CheckScore(west)) if Helper.CheckScore(west) != '' else Helper.CheckScore(west),
         'east': float(Helper.CheckScore(east)) if Helper.CheckScore(east) != '' else Helper.CheckScore(east),
-        'raw_data_type': Helper.CheckScore(raw_data_type)
+        'RawDataType': Helper.CheckScore(RawDataType)
     }
 
     return data_param_topex
@@ -41,14 +41,14 @@ def GetBougerDensity(message):
     south = query({"inputs": {"question": "What is the value of south?", "context": message}})
     west = query({"inputs": {"question": "What is the value of west?", "context": message}})
     east = query({"inputs": {"question": "What is the value of east?", "context": message}})
-    raw_data_type = query({"inputs": {"question": "What is the kind of data?", "context": message}})
+    RawDataType = query({"inputs": {"question": "What is the kind of data?", "context": message}})
 
     data_param_topex = {
         'north': float(Helper.CheckScore(north)) if Helper.CheckScore(north) != '' else Helper.CheckScore(north),
         'south': float(Helper.CheckScore(south)) if Helper.CheckScore(south) != '' else Helper.CheckScore(south),
         'west': float(Helper.CheckScore(west)) if Helper.CheckScore(west) != '' else Helper.CheckScore(west),
         'east': float(Helper.CheckScore(east)) if Helper.CheckScore(east) != '' else Helper.CheckScore(east),
-        'raw_data_type': Helper.CheckScore(raw_data_type)
+        'RawDataType': Helper.CheckScore(RawDataType)
     }
 
     return data_param_topex

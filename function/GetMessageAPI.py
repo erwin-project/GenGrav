@@ -33,13 +33,13 @@ def GetDataTopexMessage(message, cache: dict):
                 topo_dataset = cache['TopoData']
                 topex_dataset = cache['TopexData']
 
-            cache['raw_data_type'] = cache['raw_data_type'].lower()
+            cache['RawDataType'] = cache['RawDataType'].lower()
 
-            if ('gravity' in cache['raw_data_type']) or ('gravitational' in cache['raw_data_type']):
+            if ('gravity' in cache['RawDataType']) or ('gravitational' in cache['RawDataType']):
                 message = 'Here the gravitational data that we successfully get.'
                 result = grav_dataset
 
-                data_type = cache['raw_data_type']
+                data_type = cache['RawDataType']
                 data_num = Helper.GetNumberUnique(cache['unique_num'])
                 cache['unique_num'].append(data_num)
 
@@ -55,11 +55,11 @@ def GetDataTopexMessage(message, cache: dict):
                     mime='text/csv'
                 )
 
-            elif ('topo' in cache['raw_data_type']) or ('topography' in cache['raw_data_type']):
+            elif ('topo' in cache['RawDataType']) or ('topography' in cache['RawDataType']):
                 message = 'Here the topography data that we successfully get.'
                 result = topo_dataset
 
-                data_type = cache['raw_data_type']
+                data_type = cache['RawDataType']
                 data_num = Helper.GetNumberUnique(cache['unique_num'])
                 cache['unique_num'].append(data_num)
 
@@ -79,7 +79,7 @@ def GetDataTopexMessage(message, cache: dict):
                 message = 'Here the gravitational and topography data that we successfully get.'
                 result = topex_dataset
 
-                data_type = cache['raw_data_type']
+                data_type = cache['RawDataType']
                 data_num = Helper.GetNumberUnique(cache['unique_num'])
                 cache['unique_num'].append(data_num)
 
