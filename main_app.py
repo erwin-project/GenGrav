@@ -19,8 +19,17 @@ if "unique_num" not in st.session_state:
 if "login" not in st.session_state:
     st.session_state["login"] = "False"
 
-# Initial Account
+# Initialize chat history
+if "container" not in st.session_state:
+    st.session_state["container"] = []
 
+    with open('cache/cache.json', 'r') as file:
+        cache = json.load(file)
+
+    for key, val in cache.items():
+        st.session_state[key] = val
+
+# Initial Account
 if "user" not in st.session_state:
     st.session_state["user"] = {}
 
@@ -60,23 +69,13 @@ if st.session_state["login"] == "False":
             st.error("Please input username and password!")
 
 else:
-    # Initialize chat history
-    if "container" not in st.session_state:
-        st.session_state["container"] = []
-
-        with open('cache/cache.json', 'r') as file:
-            cache = json.load(file)
-
-        for key, val in cache.items():
-            st.session_state[key] = val
-
     # Display chat messages from history on app rerun
     for item in st.session_state["container"]:
         with st.chat_message(item["role"]):
             if item["label"] == 0 or str(item["content"]) == '':
                 st.markdown(item["message"])
 
-            elif item["label"] == 1:
+            elif item["label"] == 1 or tem["label"] == 2:
                 st.markdown(item["message"])
                 st.dataframe(item["content"])
 
