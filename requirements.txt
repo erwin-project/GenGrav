@@ -1,0 +1,7 @@
+requests~=2.32.3
+spacy~=3.7.6
+nltk~=3.8.1
+numpy~=1.26.4
+streamlit~=1.37.1
+pandas~=2.1.4
+pillow~=10.4.0
