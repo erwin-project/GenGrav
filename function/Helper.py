@@ -9,6 +9,8 @@ import nltk
 from nltk.stem import PorterStemmer
 from nltk.stem.wordnet import WordNetLemmatizer
 
+nltk.download("stopwords")
+
 # URL_API = ("https://api-inference.huggingface.co/models/google-bert/"
 #            "bert-large-uncased-whole-word-masking-finetuned-squad")
 URL_API = "https://api-inference.huggingface.co/models/deepset/roberta-base-squad2"
