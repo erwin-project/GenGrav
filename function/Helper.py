@@ -1,16 +1,25 @@
+import re
 import io
 import time
 import random
+import requests
+import string
+import spacy
+import nltk
+from nltk.stem import PorterStemmer
+from nltk.stem.wordnet import WordNetLemmatizer
+
+# URL_API = ("https://api-inference.huggingface.co/models/google-bert/"
+#            "bert-large-uncased-whole-word-masking-finetuned-squad")
+URL_API = "https://api-inference.huggingface.co/models/deepset/roberta-base-squad2"
+headers = {"Authorization": "Bearer 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"}
 
 
 def CheckScore(value):
-    try:
-        if value['score'] < 0.001:
-            return ''
-        else:
-            return value['answer']
-    except:
+    if value['score'] < 0.001:
         return ''
+    else:
+        return value['answer']
 
 
 def CheckCoordinate(data_coordinate):
@@ -68,3 +77,49 @@ def GetNumberUnique(lst):
 
         if rand_num not in lst:
             return rand_num
+
+
+def query(payload):
+    response = requests.post(URL_API, headers=headers, json=payload)
+
+    return response.json()
+
+
+def CleanText(text, stem='Stem'):
+    final_string = ""
+
+    # Make lower
+    text = text.lower()
+
+    # Remove line breaks
+    # Note: that this line can be augmented and used over
+    # to replace any characters with nothing or a space
+    text = re.sub(r'\n', '', text)
+
+    # # Remove punctuation
+    # translator = str.maketrans('', '', string.punctuation)
+    # text = text.translate(translator)
+
+    # Remove stop words
+    text = text.split()
+    useless_words = nltk.corpus.stopwords.words("english")
+    useless_words = useless_words + ['hi', 'im']
+
+    text_filtered = [word for word in text if not word in useless_words]
+
+    # # Remove numbers
+    # text_filtered = [re.sub(r'\w*\d\w*', '', w) for w in text_filtered]
+
+    # Stem or Lemmatize
+    if stem == 'Stem':
+        stemmer = PorterStemmer()
+        text_stemmed = [stemmer.stem(y) for y in text_filtered]
+    elif stem == 'Lem':
+        lem = WordNetLemmatizer()
+        text_stemmed = [lem.lemmatize(y) for y in text_filtered]
+    else:
+        text_stemmed = text_filtered
+
+    final_string = ' '.join(text_stemmed)
+
+    return final_string

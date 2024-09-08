@@ -1,9 +1,12 @@
 {
+  "question": "True",
   "north": "",
   "south": "",
   "west": "",
   "east": "",
   "RawDataType": "",
+  "Easting": "",
+  "Northing": "",
   "GravDataFAA": "",
   "TopoData": "",
   "TopexData": "",
