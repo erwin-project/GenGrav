@@ -8,6 +8,8 @@ import spacy
 import nltk
 from nltk.stem import PorterStemmer
 from nltk.stem.wordnet import WordNetLemmatizer
+from googletrans import Translator
+
 
 nltk.download("stopwords")
 
@@ -88,7 +90,11 @@ def query(payload):
 
 
 def CleanText(text, stem='Stem'):
-    final_string = ""
+    # Create a Translator object
+    translator = Translator()
+
+    # Translate the text to English
+    translated = translator.translate(text, dest='en')
 
     # Make lower
     text = text.lower()
