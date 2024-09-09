@@ -22,6 +22,7 @@ if "login" not in st.session_state:
 # Initialize chat history
 if "container" not in st.session_state:
     st.session_state["container"] = []
+    st.session_state["label"] = ''
 
     with open('cache/cache.json', 'r') as file:
         cache = json.load(file)
@@ -130,8 +131,13 @@ else:
             if st.session_state['question'] == 'True':
                 if "bouger" in prompt or "bouger density" in prompt or "densitas" in prompt:
                     label = 2
+                    st.session_state["label"] = label
+
                 else:
                     label = 1
+                    st.session_state["label"] = label
+            else:
+                label = st.session_state["label"]
 
             # Classification Text
             if label == 1:

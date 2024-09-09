@@ -7,10 +7,10 @@ def GetDataTopexParam(prompt):
 
     message = Helper.CleanText(prompt)
 
-    north = Helper.query({"inputs": {"question": "What is the value of north?", "context": message}})
-    south = Helper.query({"inputs": {"question": "What is the value of south?", "context": message}})
-    west = Helper.query({"inputs": {"question": "What is the value of west?", "context": message}})
-    east = Helper.query({"inputs": {"question": "What is the value of east?", "context": message}})
+    north = Helper.query({"inputs": {"question": "What is the value of north/utara?", "context": message}})
+    south = Helper.query({"inputs": {"question": "What is the value of south/selatan?", "context": message}})
+    west = Helper.query({"inputs": {"question": "What is the value of west/barat?", "context": message}})
+    east = Helper.query({"inputs": {"question": "What is the value of east/timur?", "context": message}})
     RawDataType = Helper.query({"inputs": {"question": "What is the kind of data?", "context": message}})
 
     data_param_topex = {
