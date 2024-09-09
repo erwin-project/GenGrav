@@ -10,7 +10,6 @@ from nltk.stem import PorterStemmer
 from nltk.stem.wordnet import WordNetLemmatizer
 from googletrans import Translator
 
-
 nltk.download("stopwords")
 
 # URL_API = ("https://api-inference.huggingface.co/models/google-bert/"
